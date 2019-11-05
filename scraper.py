@@ -80,12 +80,15 @@ def crawl(token, channel, legco_api_token, year):
             try:
                 press_release = all_text(detail_root.xpath("//div[@id=\"pressrelease\"]")[0])
             except IndexError:
+                print(link)
                 detail_r = requests.get(link)
                 detail_r.encoding = "utf-8"
+                if detail_r.status_code > 299:
+                    print('Not available')
+                    continue
                 output = detail_r.text
                 output = cleaner.clean_html(output)
                 detail_root = etree.HTML(output)
-                print(link)
                 press_release = all_text(detail_root.xpath("//span[@id=\"pressrelease\"]")[0])
             question_start = press_release.find(u'以下')
             reply_start = press_release.rfind(u'答覆：')
