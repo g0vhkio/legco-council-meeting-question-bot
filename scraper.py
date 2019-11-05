@@ -114,7 +114,7 @@ def crawl(token, channel, legco_api_token, year):
             pass
         if existed:
             continue
-        scraperwiki.sqlite.save(unique_keys=['key'], data=q)
+        scraperwiki.sqlite.save(unique_keys=['key'], data={k: q[k] for k in ['key', 'date', 'link', 'individual']})
         created = upload_question(q, legco_api_token)
         if created:
             text = "New question is available at %s." % (q['link'])
