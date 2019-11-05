@@ -5,4 +5,4 @@ slackclient==1.2.0
 textwrap3==0.9.1
 lxml==4.1.1
 simplejson==3.16.0
--e git+http://github.com/openaustralia/scraperwiki-python.git@morph_defaults#egg=scraperwiki
+-e git+http://github.com/andylolz/scraperwiki-python.git@morph_defaults#egg=scraperwiki
